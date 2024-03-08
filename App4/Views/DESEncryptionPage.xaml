@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App4.Views.DESEncryptionPage"
+             Title="Data encryption standard  ">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#3d0c02</Color>
+            <!-- Accent color: A shade of blue -->
+            <Color x:Key="DarkBackground">#2c3e50</Color>
+            <!-- Dark background color -->
+            <Color x:Key="LightText">#ecf0f1</Color>
+            <!-- Light text color -->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="{StaticResource DarkBackground}">
+        <!-- Header -->
+
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource Accent}" Padding="24">
+                <Label Text="Encryption and Decryption" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </StackLayout>
+
+            <StackLayout Padding="16">
+                <!-- Introduction -->
+                <Label Text="Start Encryption and Decryption now" FontSize="Title" Padding="0, 20, 0, 10" TextColor="{StaticResource LightText}" HorizontalTextAlignment="Center"/>
+                <Label Text="Make your message Encrypted. Give it a try!" FontSize="16" TextColor="{StaticResource LightText}" HorizontalTextAlignment="Center"/>
+
+                <!-- Message Entry -->
+                <StackLayout Padding="16">
+                    <Label Text="Enter your message" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Entry x:Name="messageENC" Placeholder="Enter your message" BackgroundColor="{StaticResource DarkBackground}" TextColor="{StaticResource LightText}"/>
+                </StackLayout>
+                
+                <!-- Keeys -->
+                <StackLayout>
+                    <Label Text="Enter your KEY 8byte Must Be HEX" FontSize="16" TextColor="{StaticResource LightText}"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Entry Placeholder="Byte 1" x:Name="byte1Entry" MaxLength="2"  />
+                    <Entry Placeholder="Byte 2" x:Name="byte2Entry" MaxLength="2"  />
+                    <Entry Placeholder="Byte 3" x:Name="byte3Entry" MaxLength="2"  />
+                    <Entry Placeholder="Byte 4" x:Name="byte4Entry" MaxLength="2"  />
+                    <Entry Placeholder="Byte 5" x:Name="byte5Entry" MaxLength="2"  />
+                    <Entry Placeholder="Byte 6" x:Name="byte6Entry" MaxLength="2"  />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Entry Placeholder="Byte 7" x:Name="byte7Entry" MaxLength="2"  />
+                    <Entry Placeholder="Byte 8" x:Name="byte8Entry" MaxLength="2"  />
+                </StackLayout>
+                
+
+                <!-- Buttons -->
+                <StackLayout>
+                    <Button Text="Show KEY"  BackgroundColor="{StaticResource Accent}" Clicked="OnSubmitClicked" TextColor="White" CornerRadius="5"/>
+                </StackLayout>
+                <StackLayout Padding="16">
+                    <Label Text="Key" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Frame BackgroundColor="{StaticResource LightText}" CornerRadius="5" Padding="10">
+                        <Label x:Name="KeyLabel" TextColor="{StaticResource DarkBackground}"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="16">
+                    <Button Text="Encrypt"  BackgroundColor="{StaticResource Accent}" Clicked="DESEncrypt" TextColor="White" CornerRadius="5" Margin="10,0,0,0" />
+                    <Button Text="Decrypt"  BackgroundColor="{StaticResource Accent}" Clicked="DESDecrypt" TextColor="White" CornerRadius="5" Margin="10,0,0,0" />
+
+                </StackLayout>
+
+                <!-- Output Label -->
+                <StackLayout Padding="16">
+                    <Label Text="Output" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Frame BackgroundColor="{StaticResource LightText}" CornerRadius="5" Padding="10">
+                        <Label x:Name="outputLabel" TextColor="{StaticResource DarkBackground}"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

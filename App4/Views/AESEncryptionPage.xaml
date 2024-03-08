@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App4.Views.AESEncryptionPage"
+             Title="Advanced Encryption Standard">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#3d0c02</Color>
+            <!-- Accent color: A shade of blue -->
+            <Color x:Key="DarkBackground">#2c3e50</Color>
+            <!-- Dark background color -->
+            <Color x:Key="LightText">#ecf0f1</Color>
+            <!-- Light text color -->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="{StaticResource DarkBackground}">
+        <!-- Header -->
+
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource Accent}" Padding="24">
+                <Label Text="Encryption and Decryption" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </StackLayout>
+
+            <StackLayout Padding="16">
+                <!-- Introduction -->
+                <Label Text="Start Encryption and Decryption now" FontSize="Title" Padding="0, 20, 0, 10" TextColor="{StaticResource LightText}" HorizontalTextAlignment="Center"/>
+                <Label Text="Make your message Encrypted. Give it a try!" FontSize="16" TextColor="{StaticResource LightText}" HorizontalTextAlignment="Center"/>
+
+                <!-- Message Entry -->
+                <StackLayout Padding="16">
+                    <Label Text="Enter your message" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Entry x:Name="messageENC" Placeholder="Enter your message" BackgroundColor="{StaticResource DarkBackground}" TextColor="{StaticResource LightText}"/>
+                </StackLayout>
+
+                <!-- Keeys -->
+                <StackLayout>
+                    <Label Text="Enter your PasswordKey" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <StackLayout Padding="16">
+                        <Entry x:Name="PassKey" Placeholder="Enter your message" BackgroundColor="{StaticResource DarkBackground}" TextColor="{StaticResource LightText}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="16">
+                    <Button Text="Encrypt"  BackgroundColor="{StaticResource Accent}" Clicked="EncryptionAes"  TextColor="White" CornerRadius="5" Margin="10,0,0,0" />
+                    <Button Text="Decrypt"  BackgroundColor="{StaticResource Accent}" Clicked="DecryptionAes"  TextColor="White" CornerRadius="5" Margin="10,0,0,0" />
+                </StackLayout>
+                <!-- Output Label -->
+                <StackLayout Padding="16">
+                    <Label Text="Output" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Frame BackgroundColor="{StaticResource LightText}" CornerRadius="5" Padding="10">
+                        <Label x:Name="outputLabel" TextColor="{StaticResource DarkBackground}"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

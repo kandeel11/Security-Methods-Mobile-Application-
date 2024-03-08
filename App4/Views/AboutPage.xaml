@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App4.Views"
+             x:Class="App4.Views.AboutPage"
+             xmlns:vm="clr-namespace:App4.ViewModels"
+             Title="Encryption MK">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#3d0c02</Color>
+            <!-- Accent color: A shade of blue -->
+            <Color x:Key="DarkBackground">#2c3e50</Color>
+            <!-- Dark background color -->
+            <Color x:Key="LightText">#ecf0f1</Color>
+            <!-- Light text color -->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource DarkBackground}">
+        <!-- Header -->
+        
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource Accent}" Padding="24">
+                <Label Text="Encryption and Decryption" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </StackLayout>
+
+            <StackLayout Padding="16">
+                <!-- Introduction -->
+                <Label Text="Start Encryption and Decryption now" FontSize="Title" Padding="0, 20, 0, 10" TextColor="{StaticResource LightText}" HorizontalTextAlignment="Center"/>
+                <Label Text="Make your message Encrypted. Give it a try!" FontSize="16" TextColor="{StaticResource LightText}" HorizontalTextAlignment="Center"/>
+
+                <!-- Encryption Method Picker -->
+                <StackLayout Padding="16">
+                    <Label Text="Select Encryption Method" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Picker x:Name="encryptionMethodPicker" Title="Select Method" SelectedIndex="0" TextColor="{StaticResource LightText}">
+                        <Picker.Items>
+                            <x:String>Ceaser Cipher</x:String>
+                            <x:String>Vigenère Cipher</x:String>
+                            <x:String>RailFence Cipher</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                <!-- Message Entry -->
+                <StackLayout Padding="16">
+                    <Label Text="Enter your message" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Entry x:Name="messageEntry" Placeholder="Enter your message" BackgroundColor="{StaticResource DarkBackground}" TextColor="{StaticResource LightText}"/>
+                </StackLayout>
+
+                <!-- Shift Entry (for Caesar Cipher, RailFence Cipher) -->
+                <StackLayout Padding="16">
+                    <Label Text="Shift Value (for Caesar Cipher, RailFence Cipher)" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Entry x:Name="shiftEntry" Keyboard="Numeric" Placeholder="Enter an integer" BackgroundColor="{StaticResource DarkBackground}" TextColor="{StaticResource LightText}"/>
+                </StackLayout>
+
+                <!-- Key Entry (for Vigenère Cipher) -->
+                <StackLayout Padding="16">
+                    <Label Text="Vigenère Key (for Vigenère Cipher)" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Entry x:Name="keyEntry" Placeholder="Enter a key" BackgroundColor="{StaticResource DarkBackground}" TextColor="{StaticResource LightText}"/>
+                </StackLayout>
+                <!-- Buttons -->
+                <StackLayout Orientation="Horizontal" Padding="16">
+                    <Button Text="RSA Encryption"  BackgroundColor="{StaticResource Accent}" TextColor="White" CornerRadius="5" Margin="10,0,0,0" Clicked="OnRSAEncryptionClicked"/>
+                    <Button Text="DES Encryption"  BackgroundColor="{StaticResource Accent}" TextColor="White" CornerRadius="5" Margin="10,0,0,0" Clicked="OnDESEncryptionClicked"/>
+                </StackLayout>
+                <StackLayout>
+                    <Button Text="AES Encryption"  BackgroundColor="{StaticResource Accent}" TextColor="White" CornerRadius="5" Margin="10,0,0,0" Clicked="OnAESEncryptionClicked"/>
+                </StackLayout>
+
+                <!-- Buttons -->
+                <StackLayout Orientation="Horizontal" Padding="16">
+                    <Button Text="Encrypt"  BackgroundColor="{StaticResource Accent}"  Clicked="OnEncryptClicked" TextColor="White" CornerRadius="5"/>
+                    <Button Text="Decrypt"  BackgroundColor="{StaticResource Accent}" Clicked="OnDecryptClicked" TextColor="White" CornerRadius="5" Margin="10,0,0,0"/>
+                </StackLayout>
+
+                <!-- Output Label -->
+                <StackLayout Padding="16">
+                    <Label Text="Output" FontSize="16" TextColor="{StaticResource LightText}"/>
+                    <Frame BackgroundColor="{StaticResource LightText}" CornerRadius="5" Padding="10">
+                        <Label x:Name="outputLabel" TextColor="{StaticResource DarkBackground}"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
